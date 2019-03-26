@@ -39,30 +39,13 @@ def load_desc(lemmatext):
             continue
         ids=word[0].split('#')
         intface.append(ids+[word[1].lower()])
-        #ids=ids.split('.')[0]
-        #desc=' '.join(desc)
-        #if ids not in intface:
-        #    intface[ids]=list()
-        #intface[ids].append(desc)
-        
     return intface
 description=load_desc(lemmatext)
 act_desc=pd.DataFrame(description,columns=["file","index","caption"])
 filename=np.unique(act_desc.file.values)
 Counter(Counter(act_desc.file.values).values())
-#print(act_desc)
-
-#print(description)
 
 from pickle import dumps,loads
-#res=dumps(description)
-#open('/home/ankit/data set/dump.txt').write(res)
-
-#description=loads(open('/home/ankit/data set/dump.txt').read())
-#print(description.type)
-#description=str(description)
-
-
 
 def clean(description):
     descrip=description.translate(string.punctuation)
@@ -115,7 +98,6 @@ for x,img in enumerate(images):
     image=img_to_array(image)
     pro_image=preprocess_input(image)
     features=model.predict(pro_image.reshape((1,)+pro_image.shape[:3]))
-    #features=np.reshape(features,features.shape[1])
     encoding[img]=features.flatten()
 
 
