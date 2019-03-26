@@ -24,7 +24,7 @@ def loadFile(flname):
     text=file.read()
     file.close()
     return text
-flname="/home/ankit/data set/Flickr8k_text/Flickr8k.token.txt"
+flname="...../Flickr8k.token.txt"
 lemmatext=loadFile(flname)
 #print(lemmatext)
 
@@ -87,13 +87,13 @@ model.summary()
 
 
 
-images=os.listdir("/home/ankit/data set/Flickr8k_Dataset/Flicker8k_Dataset")
+images=os.listdir("../Flickr8k_Dataset/Flicker8k_Dataset")
 
 
 
 encoding={}
 for x,img in enumerate(images):
-    file="/home/ankit/data set/Flickr8k_Dataset/Flicker8k_Dataset"+"/"+img
+    file="../Flickr8k_Dataset/Flicker8k_Dataset"+"/"+img
     image=load_img(file, target_size=(224,224,3))
     image=img_to_array(image)
     pro_image=preprocess_input(image)
@@ -185,7 +185,7 @@ def predict(img):
 count=1
 fig=plt.figure(figsize=(10,20))
 for filejpg, img_feat in zip(files_test[:10],imgs_test[:10]):
-    img_file="/home/ankit/data set/Flickr8k_Dataset/Flicker8k_Dataset"+'/'+filejpg
+    img_file="../Flickr8k_Dataset/Flicker8k_Dataset"+'/'+filejpg
     img_load=load_img(img_file,target_size=(224,224,3))
     ax=fig.add_subplot(npic,2,count,xticks=[],yticks=[])
     ax.imshow(img_load)
